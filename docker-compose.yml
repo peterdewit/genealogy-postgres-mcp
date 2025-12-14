@@ -1,0 +1,33 @@
+services:
+  genealogy-postgres:
+    image: postgres:16-alpine
+    container_name: genealogy-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${PGDATABASE}
+      POSTGRES_USER: ${PGUSER}
+      POSTGRES_PASSWORD: ${PGPASSWORD}
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    networks:
+      - self-ai
+    ports:
+      - "${PGHOSTPORT:-5432}:5432"
+
+  genealogy-db-mcp:
+    build: .
+    container_name: genealogy-db-mcp
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+    depends_on:
+      - genealogy-postgres
+    networks:
+      - self-ai
+    ports:
+      - "${MCP_HOSTPORT:-12009}:8000"
+
+networks:
+  self-ai:
+    external: true
