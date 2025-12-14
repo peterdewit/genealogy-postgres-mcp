@@ -11,23 +11,6 @@ It is a **research memory and evidence store** optimized for AI-assisted workflo
 
 ---
 
-## Design Philosophy
-
-This project follows three guiding principles:
-
-1. **Evidence-first, not conclusions-first**  
-   Claims are stored as assertions with sources, not assumed truth.
-
-2. **Incremental discovery**  
-   Data is expected to be incomplete, uncertain, or revised over time.
-
-3. **Low operational complexity**  
-   The MCP surface is kept minimal to ensure long-term stability and maintainability.
-
-Workflow logic, confidence scoring, and review processes are expected to live **outside** the database when needed.
-
----
-
 ## Core Capabilities
 
 ### People
