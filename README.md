@@ -67,7 +67,8 @@ Those concerns can be layered on later if and when needed.
 ## MCP Usage
 
 ### Transport
-- **SSE** or **Streamable HTTP**, depending on MCP SDK version
+
+- **Streamable HTTP**
 
 ### Endpoint
 ```
@@ -155,8 +156,7 @@ ASGI allows:
 Typically deployed via Docker Compose alongside:
 
 - PostgreSQL
-- MetaMCP
-- OpenWebUI or other agent clients
+- MCPO, MCPHub, MetaMCP or direct to client with MCP support
 
 The MCP server is intended to be **long-running and stable**, not frequently rebuilt.
 
@@ -170,30 +170,4 @@ Schema changes are expected but should follow these rules:
 - No destructive migrations without backups
 - Avoid embedding workflow state unless necessary
 
-Verification, confidence scoring, and review status can be layered later if the dataset justifies it.
 
----
-
-## When to Extend This Server
-
-Add new tools **only if** they:
-
-- Reduce duplicate research
-- Improve agent reasoning
-- Preserve evidence more accurately
-
-Avoid adding tools that:
-
-- Encode process decisions
-- Assume correctness
-- Increase coupling without immediate payoff
-
----
-
-## Summary
-
-This MCP server exists to answer one question reliably:
-
-> **“What do we know, what evidence supports it, and how is it connected?”**
-
-Nothing more — and that restraint is what keeps it useful.
